@@ -86,5 +86,5 @@ COMMENT ON COLUMN cdep.uof_filenum.DIVISION IS 'DPD Division (administrative div
 COMMENT ON COLUMN cdep.uof_filenum.council_district IS 'City of Dallas Council District';
 COMMENT ON COLUMN cdep.uof_filenum.X IS 'x coordinate in Texas North Central State Plane EPSG:2276';
 COMMENT ON COLUMN cdep.uof_filenum.Y IS 'y coordinate in Texas North Central State Plane EPSG:2276';
-COMMENT ON COLUMN cdep.uof_filenum.GeoLocation IS 'json of address and latitude and longitude';
+COMMENT ON COLUMN cdep.uof_filenum.geocoded_column IS 'json of address and latitude and longitude';
 COMMENT ON COLUMN cdep.uof_filenum.Year_reported IS 'Year the UoF incident was reported';
