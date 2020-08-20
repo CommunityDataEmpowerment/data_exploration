@@ -2,7 +2,7 @@
 
 DROP TABLE IF EXISTS cdep.uof_num;
 
-CREATE TABLE cdep.uof_num AS (
+CREATE TABLE cdep.uof_num (
 	OBJECTID varchar,
 	FILENUM varchar,
 	UOFNum varchar,
@@ -10,7 +10,7 @@ CREATE TABLE cdep.uof_num AS (
 	ForceEffec text --could be boolean if I trusted they were all correct
 );
 
-ALTER TABLE cdep.uof_filenum ADD PRIMARY KEY (OBJECTID,FILENUM,UOFNum);
+ALTER TABLE cdep.uof_num ADD PRIMARY KEY (OBJECTID,FILENUM,UOFNum);
 
 COMMENT ON TABLE cdep.uof_num IS 'detail of uses of force by DPD officers, referenced by OBJECTID and FILENUM to the uof_filename table';
 COMMENT ON COLUMN cdep.uof_num.OBJECTID IS 'unique object id from database';
