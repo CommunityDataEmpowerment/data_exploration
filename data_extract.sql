@@ -2,7 +2,7 @@
 SELECT DISTINCT ON (f.filenum,u.uofnum,f.citnum) f.*,u.uofnum,u.forceeffec,u.forcetype, o.off_name 
 FROM cdep.uof_filenum AS f
 --join the uof
-FULL OUTER JOIN cdep.uof_num as u
+LEFT OUTER JOIN cdep.uof_num as u
 	ON f.filenum = u.filenum
 --join the officer information
 LEFT OUTER JOIN cdep.officer as o
