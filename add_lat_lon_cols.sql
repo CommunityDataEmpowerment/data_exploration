@@ -1,3 +1,5 @@
+SELECT * FROM cdep.uof_filenum LIMIT 100;
+
 --adding the lat/lon values in columns
 --create the columns
 ALTER TABLE cdep.uof_filenum
@@ -22,7 +24,7 @@ UPDATE cdep.uof_filenum
 UPDATE cdep.uof_filenum
 	SET
 	lat = ((geocoded_column -> 'coordinates')->>1)::numeric,
-	lon = ((geocoded_column -> 'coordinates')->>2)::numeric
+	lon = ((geocoded_column -> 'coordinates')->>0)::numeric
 	WHERE geocoded_column -> 'coordinates' IS NOT NULL;
 	
 --test queries for UPDATE above
@@ -31,7 +33,7 @@ UPDATE cdep.uof_filenum
 SELECT ((geocoded_column -> 'coordinates')->>1)::numeric FROM cdep.data_extract WHERE geocoded_column -> 'coordinates' IS NOT NULL LIMIT 10
 
 --extract the longitude from the point array
-SELECT ((geocoded_column -> 'coordinates')->>2)::numeric FROM cdep.data_extract WHERE geocoded_column -> 'coordinates' IS NOT NULL LIMIT 10
+SELECT geocoded_column, ((geocoded_column -> 'coordinates')->>0)::numeric FROM cdep.data_extract WHERE geocoded_column -> 'coordinates' IS NOT NULL LIMIT 10
 
 --figuring out how to access the geocoded_column with 'coordinates' value
 SELECT geocoded_column FROM cdep.data_extract WHERE geocoded_column -> 'coordinates' IS NOT NULL;
