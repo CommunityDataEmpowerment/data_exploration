@@ -20,7 +20,7 @@ while q: # process addresses while there are still addresses to lookup in query
     for addr in q: ## assign each tuple with address in results to variable
         r = requests.get(url.format(addr[0])) ## take the first object in the tuple (the address)
         if r.json()['features']: ## check that there was a good result. Otherwise fail and set the boolean flag
-            zc = r.json()['features'][0]['properties']['address']['postcode'] if r.json()['features'][0]['properties']['address']['postcode'].find(':') == -1 else None
+            zc = r.json()['features'][0]['properties']['address']['postcode'] if 'postcode' in r.json()['features'][0]['properties']['address'].keys() and r.json()['features'][0]['properties']['address']['postcode'].find(':') == -1 else None
             lon, lat = r.json()['features'][0]['geometry']['coordinates']
             cur.execute(update,(zc,lat,lon,addr[0]))
 
